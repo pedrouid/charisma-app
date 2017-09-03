@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import GradientBackground from './components/GradientBackground';
 import Column from './components/Column';
 import HomePage from './pages/HomePage';
@@ -23,6 +23,11 @@ class Router extends Component {
       <GradientBackground />
       <Column>
         <Switch>
+          <Route
+            exact
+            path="/charisma-app"
+            render={() => <Redirect to="/" />}
+          />
           <Route exact path="/" component={HomePage} />
           <Route component={NotFound} />
         </Switch>
