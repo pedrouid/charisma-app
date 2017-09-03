@@ -128,6 +128,14 @@ class Header extends Component {
   state = {
     toggleMenu: false
   };
+  onMobileMenuOpen = () => {
+    this.setState({ toggleMenu: true });
+    document.getElementById('root').style.overflow = 'hidden';
+  };
+  onMobileMenuClose = () => {
+    this.setState({ toggleMenu: false });
+    document.getElementById('root').style.overflow = 'auto';
+  };
   render = () => (
     <StyledFlex>
       <StyledLeft>
@@ -139,9 +147,7 @@ class Header extends Component {
             <StyledName>Charisma</StyledName>
           </StyledBranding>
         </Link>
-        <StyledMobileMenuOpen
-          onClick={() => this.setState({ toggleMenu: true })}
-        >
+        <StyledMobileMenuOpen onClick={this.onMobileMenuOpen}>
           <img src={menuIcon} alt="Open Menu" />
         </StyledMobileMenuOpen>
       </StyledLeft>
@@ -155,9 +161,7 @@ class Header extends Component {
       </StyledRight>
       <StyledMobileMenu show={this.state.toggleMenu}>
         <StyledMobileMenuContainer>
-          <StyledMobileMenuClose
-            onClick={() => this.setState({ toggleMenu: false })}
-          >
+          <StyledMobileMenuClose onClick={this.onMobileMenuClose}>
             <img src={crossIcon} alt="Close Menu" />
           </StyledMobileMenuClose>
           <StyledMobileMenuList>
