@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="241px" height="200px" viewBox="0 0 241 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.1 (25234) - http://www.bohemiancoding.com/sketch -->
+    <title>menu-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="App-Preview" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop" sketch:type="MSArtboardGroup" transform="translate(-1072.000000, -562.000000)" fill="#FFFFFF">
+            <g id="menu-icon" sketch:type="MSLayerGroup" transform="translate(1072.000000, 562.000000)">
+                <g id="Layer_1" sketch:type="MSShapeGroup">
+                    <g id="Group">
+                        <path d="M120.3,199.8 L20.6,199.8 C16.2,199.8 12,198.7 8.5,196 C1.8,190.9 -0.9,184.1 0.9,175.9 C2.7,167.8 8,162.7 16.1,160.8 C17.4,160.5 18.7,160.5 20,160.4 L20.6,160.4 L220.1,160.4 C223.4,160.4 226.6,161 229.6,162.6 C236.7,166.2 241.3,173.9 240.2,182.6 C239.1,191.3 232.7,198 224.2,199.5 C222.7,199.8 221.2,199.9 219.7,199.9 C186.6,199.8 153.5,199.8 120.3,199.8 Z M120.4,119.8 L20.7,119.8 C16.5,119.8 12.5,118.8 9,116.3 C2.1,111.3 -0.7,104.5 0.8,96.1 C2.1,88.5 8.3,82.4 15.9,80.8 C17.1,80.5 18.4,80.5 19.7,80.4 L20.8,80.4 L219.8,80.4 C222.9,80.4 225.8,80.9 228.6,82.1 C236.5,85.6 241.2,93.9 240.1,102.4 C239,111.1 232.5,118 224,119.5 C222.6,119.7 221.1,119.8 219.7,119.8 C186.7,119.8 153.5,119.8 120.4,119.8 Z M120.3,39.7 L20.8,39.7 C16.3,39.7 12,38.6 8.4,35.8 C1.8,30.7 -1,23.8 0.9,15.6 C2.8,7.3 8.2,2.3 16.5,0.5 C18,0.2 19.5,0.2 21,0.2 L153.6,0.2 L220,0.2 C223.6,0.2 227,0.9 230.2,2.7 C237,6.5 241.2,14 240.1,22.5 C239,30.7 232.9,37.5 224.4,39.2 C222.9,39.5 221.3,39.6 219.7,39.6 C186.6,39.7 153.5,39.7 120.3,39.7 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
+import GradientBackground from './components/GradientBackground';
+import Column from './components/Column';
 import HomePage from './pages/HomePage';
 import NotFound from './pages/NotFound';
 
 const StyledWrapper = styled.div`
   height: 100vh;
   width: 100vw;
-  text-align: center;
+  position: relative;
 `;
 
 class Router extends Component {
@@ -19,11 +20,13 @@ class Router extends Component {
   }
   render = () => (
     <StyledWrapper>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={NotFound} />
-      </Switch>
+      <GradientBackground />
+      <Column>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route component={NotFound} />
+        </Switch>
+      </Column>
     </StyledWrapper>
   );
 }

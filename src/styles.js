@@ -17,7 +17,7 @@ export const colors = {
 export const fonts = {
   small: '12px',
   medium: '16px',
-  large: '18px',
+  large: '20px',
   h1: '30px',
   h2: '28px',
   h3: '24px',
@@ -99,10 +99,6 @@ export const globalStyles = `
   a {
     text-decoration: none;
     color: inherit;
-  }
-
-  div {
-    width: 100%;
   }
 
   * {
