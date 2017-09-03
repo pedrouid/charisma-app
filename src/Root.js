@@ -1,28 +1,23 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { colors } from './styles';
+import React from 'react';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
+import ReduxThunk from 'redux-thunk';
+import reducers from './redux';
+import Router from './Router';
 
-const StyledWrapper = styled.div`
-  background: linear-gradient(
-    to bottom,
-    rgb(${colors.gradientRed}) 0%,
-    rgb(${colors.gradientOrange}) 100%
-  );
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+const store = createStore(
+  reducers,
+  composeWithDevTools(applyMiddleware(ReduxThunk))
+);
 
-class Root extends Component {
-  render() {
-    return (
-      <StyledWrapper>
-        <h1>Hello World!</h1>
-      </StyledWrapper>
-    );
-  }
-}
+const Root = () => (
+  <Provider store={store}>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  </Provider>
+);
 
 export default Root;
