@@ -25,8 +25,10 @@ const StyledLeft = styled(HalfDiv)`
 const StyledBranding = styled.div`
   display: flex;
   align-items: center;
-  &:hover {
-    opacity: 0.7;
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.7;
+    }
   }
 `;
 
@@ -60,8 +62,10 @@ const StyledMenuList = styled.ul`
   & > li {
     display: inline;
     margin: 0 15px;
-    &:hover {
-      opacity: 0.7;
+    @media (hover: hover) {
+      &:hover {
+        opacity: 0.7;
+      }
     }
   }
 `;

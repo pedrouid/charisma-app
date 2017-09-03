@@ -48,6 +48,7 @@ const StyledAppPreview = styled.div`
   margin-top: 50px;
   & img {
     width: 100%;
+    padding: 10px;
   }
   @media (${responsive.sm.min}) {
     margin-top: 0;
