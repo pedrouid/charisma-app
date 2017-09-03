@@ -23,11 +23,6 @@ class Router extends Component {
       <GradientBackground />
       <Column>
         <Switch>
-          <Route
-            exact
-            path="/charisma-app"
-            render={() => <Redirect to="/" />}
-          />
           <Route exact path="/" component={HomePage} />
           <Route component={NotFound} />
         </Switch>
