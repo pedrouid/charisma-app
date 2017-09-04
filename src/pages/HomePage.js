@@ -34,18 +34,19 @@ const StyledRight = styled(HalfDiv)`
 
 const StyledHero = styled.h1`
   font-weight: 900;
-  font-size: 62px;
+  font-size: 60px;
   @media (${responsive.md.max}) {
     font-size: 42px;
   }
   @media (${responsive.sm.max}) {
-    font-size: 34px;
+    font-size: 9vw;
+    margin-top: 30px;
   }
 `;
 
 const StyledAppPreview = styled.div`
   width: 100%;
-  margin-top: 50px;
+  margin-top: 30px;
   & img {
     width: 100%;
     padding: 10px;
@@ -66,10 +67,13 @@ const StyledAppStore = styled.div`
 `;
 
 const StyledSubscribe = styled.div`
-  margin-top: 40px;
+  margin-top: 10px;
   font-weight: 600;
   font-size: ${fonts.large};
   width: 100%;
+  @media (${responsive.sm.min}) {
+    margin-top: 40px;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -96,7 +100,11 @@ class HomePage extends Component {
         <StyledFlex>
           <StyledLeft>
             <StyledHero>
-              {'Know the trends. Participate and share trends on the go!'}
+              <span>Know the trends.</span>
+              <br />
+              <span>Fit in or stand out.</span>
+              <br />
+              <span>Share as you go!</span>
             </StyledHero>
             <StyledAppStore>
               <img src={appStore} alt="download" />
@@ -106,7 +114,7 @@ class HomePage extends Component {
               <StyledInput
                 value={this.state.email}
                 onChange={this.updateEmailInput}
-                placeholder="enteryouremail@address.com"
+                placeholder="enter your personal email"
               />
             </StyledSubscribe>
           </StyledLeft>
