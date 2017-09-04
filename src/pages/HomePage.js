@@ -96,7 +96,7 @@ class HomePage extends Component {
         <StyledFlex>
           <StyledLeft>
             <StyledHero>
-              {'Know the trends. Participate and share trends on the go!'}
+              {'Know the trends. Fit in or stand out. Share as you go!'}
             </StyledHero>
             <StyledAppStore>
               <img src={appStore} alt="download" />
@@ -106,7 +106,7 @@ class HomePage extends Component {
               <StyledInput
                 value={this.state.email}
                 onChange={this.updateEmailInput}
-                placeholder="enteryouremail@address.com"
+                placeholder="enter our email"
               />
             </StyledSubscribe>
           </StyledLeft>
