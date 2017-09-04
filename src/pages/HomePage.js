@@ -114,7 +114,7 @@ class HomePage extends Component {
               <StyledInput
                 value={this.state.email}
                 onChange={this.updateEmailInput}
-                placeholder="enter your personal email"
+                placeholder="youremail@address.com"
               />
             </StyledSubscribe>
           </StyledLeft>
