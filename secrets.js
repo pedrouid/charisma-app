@@ -1,5 +1,0 @@
-module.exports = {
-  MAILCHIMP_API_KEY: '82524305cc7cc8920377260889cf4af4-us16',
-  MAILCHIMP_BASIC_AUTH:
-    'Basic YXBwY2hhcmlzbWE6ODI1MjQzMDVjYzdjYzg5MjAzNzcyNjA4ODljZjRhZjQtdXMxNg=='
-};

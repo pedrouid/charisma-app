@@ -1,42 +1,56 @@
 const express = require('express');
+const request = require('request');
+const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
 
-const bodyParser = require('body-parser');
-const request = require('request');
-const secrets = require('./secrets');
+app.disable('x-powered-by');
 
-var jsonParser = bodyParser.json();
 app.use(express.static(path.join(__dirname, 'build')));
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+const secrets = {
+  MAILCHIMP_API_KEY: '82524305cc7cc8920377260889cf4af4-us16',
+  MAILCHIMP_BASIC_AUTH:
+    'Basic YXBwY2hhcmlzbWE6ODI1MjQzMDVjYzdjYzg5MjAzNzcyNjA4ODljZjRhZjQtdXMxNg=='
+};
 const mailchimpURL =
   'https://us16.api.mailchimp.com/3.0/lists/661d067918/members';
 
-app.post('/api/subscribe', jsonParser, (req, res) => {
+app.post('/api/subscribe', (req, res) => {
   if (!req.body) return res.sendStatus(400);
-
   const email = req.body.email;
 
-  const requestOptions = {
-    url: mailchimpURL,
-    method: 'POST',
-    headers: {
-      Authorization: secrets.MAILCHIMP_BASIC_AUTH
+  request.post(
+    mailchimpURL,
+    {
+      headers: {
+        Authorization: secrets.MAILCHIMP_BASIC_AUTH
+      },
+      body: JSON.stringify({
+        email_address: email,
+        status: 'pending'
+      })
     },
-    body: {
-      email_address: email,
-      status: 'pending'
+    (error, response, body) => {
+      if (error) {
+        console.log(error);
+        res.sendStatus(500);
+        res.write(error.message);
+        res.end();
+      }
+      if (response.statusCode === 200) {
+        const json = JSON.parse(body);
+        console.log(json);
+        res.json(json);
+      } else {
+        res.json(response.statusCode);
+      }
     }
-  };
-  request(requestOptions, (error, response, body) => {
-    if (error) {
-      console.log(error);
-      res.json(error);
-    }
-    console.log(response);
-    res.json(body);
-  });
+  );
 });
 
 app.get('*', (req, res) => {

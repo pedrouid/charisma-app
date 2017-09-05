@@ -19,4 +19,4 @@ const api = axios.create({
  * @param  {String} [password='']
  * @return {Promise}
  */
-export const apiSubscribe = (email = '') => api.post('/session', { email });
+export const apiSubscribe = (email = '') => api.post('/subscribe', { email });
