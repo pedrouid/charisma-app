@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
 import GradientBackground from './components/GradientBackground';
 import Column from './components/Column';
+import Notification from './components/Notification';
 import HomePage from './pages/HomePage';
 import NotFound from './pages/NotFound';
 
@@ -27,6 +28,7 @@ class Router extends Component {
           <Route component={NotFound} />
         </Switch>
       </Column>
+      <Notification />
     </StyledWrapper>
   );
 }

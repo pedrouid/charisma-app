@@ -8,10 +8,12 @@
     "lint": "eslint src",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "server": "npm run build && pm2 restart index.js"
+    "deploy": "npm run build && pm2 restart index.js",
+    "dev": "concurrently \"npm start\" \"nodemon index.js\""
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -22,16 +24,20 @@
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
+    "request": "^2.81.0",
     "styled-components": "^2.1.2"
   },
   "devDependencies": {
+    "concurrently": "^3.5.0",
     "eslint": "^4.6.0",
     "eslint-config-react-app": "^2.0.0",
     "eslint-plugin-flowtype": "^2.35.1",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1"
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "nodemon": "^1.11.0"
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

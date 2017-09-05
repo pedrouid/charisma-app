@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import appPreview from '../assets/app-preview.png';
 import appStore from '../assets/app-store.png';
 import HalfDiv from '../components/HalfDiv';
 import Header from '../components/Header';
 import { colors, fonts, responsive } from '../styles';
+import { subscribeSubmit } from '../redux/_subscribe';
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -66,7 +69,7 @@ const StyledAppStore = styled.div`
   }
 `;
 
-const StyledSubscribe = styled.div`
+const StyledSubscribe = styled.form`
   margin-top: 10px;
   font-weight: 600;
   font-size: ${fonts.large};
@@ -93,6 +96,10 @@ class HomePage extends Component {
     email: ''
   };
   updateEmailInput = ({ target }) => this.setState({ email: target.value });
+  onSubmitEmail = e => {
+    e.preventDefault();
+    this.props.subscribeSubmit(this.state.email);
+  };
   render() {
     return (
       <StyledWrapper>
@@ -109,9 +116,10 @@ class HomePage extends Component {
             <StyledAppStore>
               <img src={appStore} alt="download" />
             </StyledAppStore>
-            <StyledSubscribe>
+            <StyledSubscribe onSubmit={this.onSubmitEmail}>
               <p>Subscribe to get early access to the beta release</p>
               <StyledInput
+                type="email"
                 value={this.state.email}
                 onChange={this.updateEmailInput}
                 placeholder="youremail@address.com"
@@ -129,4 +137,8 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+HomePage.propTypes = {
+  subscribeSubmit: PropTypes.func.isRequired
+};
+
+export default connect(null, { subscribeSubmit })(HomePage);
