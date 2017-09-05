@@ -44,7 +44,6 @@ app.post('/api/subscribe', (req, res) => {
       }
       if (response.statusCode === 200) {
         const json = JSON.parse(body);
-        console.log(json);
         res.json(json);
       } else {
         res.sendStatus(response.statusCode);
