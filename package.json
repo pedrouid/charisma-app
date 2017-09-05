@@ -8,7 +8,7 @@
     "lint": "eslint src",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "server": "npm run build && pm2 restart index.js",
+    "deploy": "npm run build && pm2 restart index.js",
     "dev": "concurrently \"npm start\" \"nodemon index.js\""
   },
   "dependencies": {
