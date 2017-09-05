@@ -47,7 +47,7 @@ app.post('/api/subscribe', (req, res) => {
         console.log(json);
         res.json(json);
       } else {
-        res.json(response.statusCode);
+        res.sendStatus(response.statusCode);
       }
     }
   );

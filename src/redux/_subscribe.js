@@ -1,4 +1,5 @@
 import { apiSubscribe } from '../helpers/api';
+import { notificationShow } from './_notification';
 
 // -- Constants ------------------------------------------------------------- //
 const SUBSCRIBE_REQUEST = 'subscribe/SUBSCRIBE_REQUEST';
@@ -11,9 +12,13 @@ export const subscribeSubmit = email => dispatch => {
   apiSubscribe(email)
     .then(() => {
       dispatch({ type: SUBSCRIBE_SUCCESS });
+      dispatch(
+        notificationShow("Thanks! We've sent you a confirmation email.")
+      );
     })
     .catch(() => {
       dispatch({ type: SUBSCRIBE_FAILURE });
+      dispatch(notificationShow('Something went wrong, please try again.'));
     });
 };
 
