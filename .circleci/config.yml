@@ -12,7 +12,7 @@ jobs:
           root: ~/tmp
           paths: .
 
-   run_tests:
+  run_tests:
     docker:
       - image: circleci/node:6.11.2
     working_directory: ~/tmp
@@ -21,16 +21,15 @@ jobs:
           at: ~/tmp
       - run: npm run lint
 
-    deploy_production:
-      docker:
-        - image: circleci/node:6.11.2
-      working_directory: ~/tmp
-      steps:
-        - checkout
-        - attach_workspace:
-            at: ~/loot
-        - run: ssh pedro@charisma-app.com "cd apps/charisma-app && git pull && npm run deploy"
-        - run: npm run deploy
+  deploy_production:
+    docker:
+      - image: circleci/node:6.11.2
+    working_directory: ~/tmp
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/loot
+      - run: ssh pedro@charisma-app.com "cd apps/charisma-app && git pull && npm run deploy"
 
 workflows:
   version: 2
