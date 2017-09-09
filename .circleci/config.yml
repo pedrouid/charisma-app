@@ -1,10 +1,49 @@
 version: 2
 jobs:
-  build:
-    working_directory: ~/tmp
+  run_build:
     docker:
       - image: circleci/node:6.11.2
+    working_directory: ~/tmp
     steps:
       - checkout
       - run: npm install
-      - run: npm test
+      - run: npm run build
+      - persist_to_workspace:
+          root: ~/tmp
+          paths: .
+
+   run_tests:
+    docker:
+      - image: circleci/node:6.11.2
+    working_directory: ~/tmp
+    steps:
+      - attach_workspace:
+          at: ~/tmp
+      - run: npm run lint
+
+    deploy_production:
+      docker:
+        - image: circleci/node:6.11.2
+      working_directory: ~/tmp
+      steps:
+        - checkout
+        - attach_workspace:
+            at: ~/loot
+        - run: ssh pedro@charisma-app.com "cd apps/charisma-app && git pull && npm run deploy"
+        - run: npm run deploy
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - run_build
+      - run_tests:
+          requires:
+            - run_build
+      - deploy_production:
+          requires:
+            - run_build
+            - run_tests
+          filters:
+            branches:
+              only: production
