@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/tmp
     docker:
-      - image: circleci/node:lts
+      - image: circleci/node:stable
     steps:
       - checkout
       - run: npm install
