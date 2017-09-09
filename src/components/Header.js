@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import HalfDiv from '../components/HalfDiv';
 import logoWhite from '../assets/logo-white.svg';
@@ -15,6 +16,7 @@ const StyledFlex = styled.div`
 `;
 
 const StyledLeft = styled(HalfDiv)`
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   @media (${responsive.sm.max}) {
@@ -44,8 +46,7 @@ const StyledLogo = styled.div`
 `;
 
 const StyledRight = styled(HalfDiv)`
-  display: flex;
-  width: 50%;
+  flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   @media (${responsive.sm.max}) {
@@ -93,6 +94,9 @@ const StyledMobileMenu = styled.div`
   pointer-events: ${({ show }) => (show ? 'auto' : 'none')};
   visibility: ${({ show }) => (show ? 'visible' : 'hidden')};
   opacity: ${({ show }) => (show ? 1 : 0)};
+  @media (${responsive.sm.min}) {
+    display: none;
+  }
 `;
 
 const StyledMobileMenuContainer = styled.div`
@@ -153,10 +157,11 @@ class Header extends Component {
       </StyledLeft>
       <StyledRight>
         <StyledMenuList>
-          <li>About</li>
-          <li>Features</li>
-          <li>Team</li>
-          <li>Contact</li>
+          {this.props.pages.map(page => (
+            <li key={`link-${page.name}`}>
+              <Link to={page.path}>{page.name}</Link>
+            </li>
+          ))}
         </StyledMenuList>
       </StyledRight>
       <StyledMobileMenu show={this.state.toggleMenu}>
@@ -165,15 +170,20 @@ class Header extends Component {
             <img src={crossIcon} alt="Close Menu" />
           </StyledMobileMenuClose>
           <StyledMobileMenuList>
-            <li>About</li>
-            <li>Features</li>
-            <li>Team</li>
-            <li>Contact</li>
+            {this.props.pages.map(page => (
+              <li key={`mobileLink-${page.name}`}>
+                <Link to={page.path}>{page.name}</Link>
+              </li>
+            ))}
           </StyledMobileMenuList>
         </StyledMobileMenuContainer>
       </StyledMobileMenu>
     </StyledFlex>
   );
 }
+
+Header.propTypes = {
+  pages: PropTypes.array.isRequired
+};
 
 export default Header;

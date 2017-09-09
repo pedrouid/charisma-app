@@ -5,14 +5,8 @@ import { connect } from 'react-redux';
 import appPreview from '../assets/app-preview.png';
 import appStore from '../assets/app-store.png';
 import HalfDiv from '../components/HalfDiv';
-import Header from '../components/Header';
 import { colors, fonts, responsive } from '../styles';
 import { subscribeSubmit } from '../redux/_subscribe';
-
-const StyledWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-`;
 
 const StyledFlex = styled.div`
   width: 100%;
@@ -102,37 +96,34 @@ class HomePage extends Component {
   };
   render() {
     return (
-      <StyledWrapper>
-        <Header />
-        <StyledFlex>
-          <StyledLeft>
-            <StyledHero>
-              <span>Know the trends.</span>
-              <br />
-              <span>Fit in or stand out.</span>
-              <br />
-              <span>Share as you go!</span>
-            </StyledHero>
-            <StyledAppStore>
-              <img src={appStore} alt="download" />
-            </StyledAppStore>
-            <StyledSubscribe onSubmit={this.onSubmitEmail}>
-              <p>Subscribe to get early access to the beta release</p>
-              <StyledInput
-                type="email"
-                value={this.state.email}
-                onChange={this.updateEmailInput}
-                placeholder="youremail@address.com"
-              />
-            </StyledSubscribe>
-          </StyledLeft>
-          <StyledRight>
-            <StyledAppPreview>
-              <img src={appPreview} alt="iPhone App" />
-            </StyledAppPreview>
-          </StyledRight>
-        </StyledFlex>
-      </StyledWrapper>
+      <StyledFlex>
+        <StyledLeft>
+          <StyledHero>
+            <span>Know the trends.</span>
+            <br />
+            <span>Fit in or stand out.</span>
+            <br />
+            <span>Share as you go!</span>
+          </StyledHero>
+          <StyledAppStore>
+            <img src={appStore} alt="download" />
+          </StyledAppStore>
+          <StyledSubscribe onSubmit={this.onSubmitEmail}>
+            <p>Subscribe to get early access to the beta release</p>
+            <StyledInput
+              type="email"
+              value={this.state.email}
+              onChange={this.updateEmailInput}
+              placeholder="youremail@address.com"
+            />
+          </StyledSubscribe>
+        </StyledLeft>
+        <StyledRight>
+          <StyledAppPreview>
+            <img src={appPreview} alt="iPhone App" />
+          </StyledAppPreview>
+        </StyledRight>
+      </StyledFlex>
     );
   }
 }

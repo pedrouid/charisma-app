@@ -12,11 +12,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const secrets = {
-  MAILCHIMP_API_KEY: '82524305cc7cc8920377260889cf4af4-us16',
-  MAILCHIMP_BASIC_AUTH:
-    'Basic YXBwY2hhcmlzbWE6ODI1MjQzMDVjYzdjYzg5MjAzNzcyNjA4ODljZjRhZjQtdXMxNg=='
-};
+const secrets = require('./config/secrets');
 const mailchimpURL =
   'https://us16.api.mailchimp.com/3.0/lists/661d067918/members';
 
