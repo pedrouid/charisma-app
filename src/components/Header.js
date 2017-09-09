@@ -154,7 +154,6 @@ class Header extends Component {
       <StyledRight>
         <StyledMenuList>
           <li>About</li>
-          <li>Features</li>
           <li>Team</li>
           <li>Contact</li>
         </StyledMenuList>
@@ -166,7 +165,6 @@ class Header extends Component {
           </StyledMobileMenuClose>
           <StyledMobileMenuList>
             <li>About</li>
-            <li>Features</li>
             <li>Team</li>
             <li>Contact</li>
           </StyledMobileMenuList>
