@@ -30,7 +30,7 @@ jobs:
       - attach_workspace:
           at: ~/loot
       - run: ssh-keyscan 138.68.174.154 >> ~/.ssh/known_hosts
-      - run: ssh pedro@138.68.174.154 "cd apps/charisma-app && git pull && npm run deploy"
+      - run: ssh pedro@138.68.174.154 "cd apps/charisma-app && git checkout production && git pull && npm run deploy"
 
 workflows:
   version: 2
