@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -6,7 +6,8 @@ import appPreview from '../assets/app-preview.png';
 import appStore from '../assets/app-store.png';
 import HalfDiv from '../components/HalfDiv';
 import Header from '../components/Header';
-import { colors, fonts, responsive } from '../styles';
+import SubscribeForm from '../components/SubscribeForm';
+import { responsive } from '../styles';
 import { subscribeSubmit } from '../redux/_subscribe';
 
 const StyledWrapper = styled.div`
@@ -69,73 +70,31 @@ const StyledAppStore = styled.div`
   }
 `;
 
-const StyledSubscribe = styled.form`
-  margin-top: 10px;
-  font-weight: 600;
-  font-size: ${fonts.large};
-  width: 100%;
-  @media (${responsive.sm.min}) {
-    margin-top: 40px;
-  }
-`;
-
-const StyledInput = styled.input`
-  background: rgb(${colors.white});
-  width: 100%;
-  border-radius: 8px;
-  max-width: 460px;
-  padding: 12px;
-  font-size: 16px;
-  -webkit-appearance: none;
-  border: none;
-  outline: none;
-`;
-
-class HomePage extends Component {
-  state = {
-    email: ''
-  };
-  updateEmailInput = ({ target }) => this.setState({ email: target.value });
-  onSubmitEmail = e => {
-    e.preventDefault();
-    this.props.subscribeSubmit(this.state.email);
-  };
-  render() {
-    return (
-      <StyledWrapper>
-        <Header />
-        <StyledFlex>
-          <StyledLeft>
-            <StyledHero>
-              <span>Know the trends.</span>
-              <br />
-              <span>Fit in or stand out.</span>
-              <br />
-              <span>Share as you go!</span>
-            </StyledHero>
-            <StyledAppStore>
-              <img src={appStore} alt="download" />
-            </StyledAppStore>
-            <StyledSubscribe onSubmit={this.onSubmitEmail}>
-              <p>Subscribe to get early access to the beta release</p>
-              <StyledInput
-                type="email"
-                value={this.state.email}
-                onChange={this.updateEmailInput}
-                placeholder="youremail@address.com"
-              />
-            </StyledSubscribe>
-          </StyledLeft>
-          <StyledRight>
-            <StyledAppPreview>
-              <img src={appPreview} alt="iPhone App" />
-            </StyledAppPreview>
-          </StyledRight>
-        </StyledFlex>
-      </StyledWrapper>
-    );
-  }
-}
+const HomePage = () => (
+  <StyledWrapper>
+    <Header />
+    <StyledFlex>
+      <StyledLeft>
+        <StyledHero>
+          <span>Know the trends.</span>
+          <br />
+          <span>Fit in or stand out.</span>
+          <br />
+          <span>Share as you go!</span>
+        </StyledHero>
+        <StyledAppStore>
+          <img src={appStore} alt="download" />
+        </StyledAppStore>
+        <SubscribeForm />
+      </StyledLeft>
+      <StyledRight>
+        <StyledAppPreview>
+          <img src={appPreview} alt="iPhone App" />
+        </StyledAppPreview>
+      </StyledRight>
+    </StyledFlex>
+  </StyledWrapper>
+);
 
 HomePage.propTypes = {
   subscribeSubmit: PropTypes.func.isRequired
