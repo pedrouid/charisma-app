@@ -10,9 +10,6 @@ const StyledSubscribe = styled.div`
   font-weight: 600;
   pos: ${fonts.large};
   width: 100%;
-  & form {
-    position: relative;
-  }
   & p {
     position: absolute;
   }
