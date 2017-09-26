@@ -44,7 +44,7 @@ class SubscribeForm extends Component {
       notificationShow('The email you provide is incomplete');
       return;
     }
-    const url = `//charisma-app.us16.list-manage.com/subscribe/post?u=5be2d0cb8242b5ca65e0236b2&amp;id=661d067918&EMAIL=${encodeURIComponent(
+    const url = `//charisma-app.us16.list-manage.com/subscribe/post-json?u=5be2d0cb8242b5ca65e0236b2&amp;id=661d067918&EMAIL=${encodeURIComponent(
       this.state.input
     )}`;
     this.setState(
@@ -60,11 +60,11 @@ class SubscribeForm extends Component {
           (err, data) => {
             this.setState({ sending: false });
             if (err) {
-              notificationShow('Something went wrong, please try again');
+              this.props.notificationShow('Something went wrong, please try again');
             } else if (data.result !== 'success') {
-              notificationShow('Something went wrong, please try again');
+              this.props.notificationShow('Something went wrong, please try again');
             } else {
-              notificationShow("Thanks! We've sent you a confirmation email.");
+              this.props.notificationShow("Thanks! We've sent you a confirmation email.");
             }
           }
         )
